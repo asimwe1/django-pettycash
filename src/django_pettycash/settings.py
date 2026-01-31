@@ -201,7 +201,6 @@ EMAIL_HOST_PASSWORD = env('EMAILPASS')
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_LOGOUT_ON_GET= True
 SOCIALACCOUNT_LOGIN_ON_GET = True
@@ -227,3 +226,33 @@ CHANNEL_LAYERS = {
 # mongodb grid filesystem
 MONGO_HOST = env('MONGO_HOST')
 MONGO_DB = env('MONGO_DB')
+# Disable email verification for django-allauth
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_REQUIRED = False
+
+# --- Complete Django Allauth Configuration ---
+# These are REQUIRED by allauth
+ACCOUNT_EMAIL_VERIFICATION = "none"  # or "mandatory", "optional"
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "username"  # or "email", "username_email"
+ACCOUNT_USERNAME_REQUIRED = True
+
+# Social account settings
+SOCIALACCOUNT_EMAIL_VERIFICATION = "none"
+SOCIALACCOUNT_EMAIL_REQUIRED = False
+
+# Site ID is REQUIRED by allauth
+SITE_ID = 1
+
+# Login settings
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+# Email backend - use console for development
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# Additional recommended settings
+ACCOUNT_UNIQUE_EMAIL = False
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_SESSION_REMEMBER = True
+# --- End Allauth Configuration ---
